@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DischargeGuard Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <h1>DischargeGuard Dashboard</h1>
+
+    <div class="input-section">
+
+        <h2>Paste Discharge Summary</h2>
+
+        <textarea
+            id="summaryInput"
+            placeholder="Paste hospital discharge summary here..."
+        ></textarea>
+
+        <button id="analyzeBtn">
+            Analyze Summary
+        </button>
+        <div class="upload-section">
+    <label for="fileUpload" class="upload-btn">
+        + Upload File
+    </label>
+
+    <input
+        type="file"
+        id="fileUpload"
+        accept=".pdf,.jpg,.jpeg,.png"
+        hidden
+    >
+
+    <p id="fileName">
+        No file selected
+    </p>
+</div>
+
+    </div>
+
+    <div class="results">
+
+        <div class="result-card">
+            <h3>Summary</h3>
+            <p id="summaryResult">
+                AI generated summary will appear here.
+            </p>
+        </div>
+
+        <div class="result-card">
+            <h3>Warning Signs</h3>
+            <p id="warningResult">
+                Warning signs will appear here.
+            </p>
+        </div>
+
+        <div class="result-card">
+            <h3>Medications</h3>
+            <p id="medicineResult">
+                Medication explanation will appear here.
+            </p>
+        </div>
+
+        <div class="result-card">
+            <h3>Caregiver Checklist</h3>
+            <p id="checklistResult">
+                Checklist will appear here.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
