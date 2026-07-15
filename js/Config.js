@@ -21,13 +21,13 @@ const firebaseProjectConfig = {
 // Initialize Firebase
 // =========================
 
-firebase.initializeApp(firebaseProjectConfig);
+//firebase.initializeApp(firebaseProjectConfig);
 
-const firestoreDatabase =
-    firebase.firestore();
+//const firestoreDatabase =
+  //  firebase.firestore();
 
-const firebaseAuthentication =
-    firebase.auth();
+//const firebaseAuthentication =
+   // firebase.auth();
 
 
 // =========================
@@ -35,7 +35,6 @@ const firebaseAuthentication =
 // =========================
 
 const geminiApiKey =
-    "YOUR_GEMINI_API_KEY";
-
+    "";
 const geminiApiUrl =
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
