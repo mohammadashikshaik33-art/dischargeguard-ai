@@ -1,12 +1,27 @@
-const fileUpload = document.getElementById("fileUpload");
-const fileName = document.getElementById("fileName");
+// =========================
+// File Upload Elements
+// =========================
 
-fileUpload.addEventListener("change", () => {
+const dischargeFileUpload =
+    document.getElementById("dischargeFileUpload");
 
-    if(fileUpload.files.length > 0){
+const selectedFileName =
+    document.getElementById("selectedFileName");
 
-        fileName.textContent =
-            fileUpload.files[0].name;
+
+// =========================
+// Display Selected File Name
+// =========================
+
+dischargeFileUpload.addEventListener("change", () => {
+
+    const uploadedFiles =
+        dischargeFileUpload.files;
+
+    if (uploadedFiles.length > 0) {
+
+        selectedFileName.textContent =
+            uploadedFiles[0].name;
 
     }
 

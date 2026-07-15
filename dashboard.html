@@ -12,39 +12,48 @@
 <div class="dashboard-container">
 
     <h1>DischargeGuard Dashboard</h1>
+<!-- =========================
+     Patient Summary Input
+========================= -->
+    <div class="summaryInputSection">
 
-    <div class="input-section">
-
-        <h2>Paste Discharge Summary</h2>
+        <h2>Enter Discharge Summary</h2>
 
         <textarea
             id="summaryInput"
             placeholder="Paste hospital discharge summary here..."
         ></textarea>
 
-        <button id="analyzeBtn">
-            Analyze Summary
+        <button id="analyzeCareButton">
+            Analyze Instructions
         </button>
+
+<!-- =========================
+     File Upload Section
+========================= -->
         <div class="upload-section">
-    <label for="fileUpload" class="upload-btn">
+    <label for="dischargeFileUpload" class="upload-btn">
         + Upload File
     </label>
 
     <input
         type="file"
-        id="fileUpload"
+        id="dischargeFileUpload"
         accept=".pdf,.jpg,.jpeg,.png"
         hidden
     >
 
-    <p id="fileName">
+    <p id="selectedFileName">
         No file selected
     </p>
 </div>
 
     </div>
 
-    <div class="results">
+<!-- =========================
+     AI Analysis Results
+========================= -->
+    <div class="analysisResultsSection">
 
         <div class="result-card">
             <h3>Summary</h3>
@@ -53,21 +62,21 @@
             </p>
         </div>
 
-        <div class="result-card">
+        <div class="analysisCard">
             <h3>Warning Signs</h3>
             <p id="warningResult">
                 Warning signs will appear here.
             </p>
         </div>
 
-        <div class="result-card">
+        <div class="analysisCard">
             <h3>Medications</h3>
             <p id="medicineResult">
                 Medication explanation will appear here.
             </p>
         </div>
 
-        <div class="result-card">
+        <div class="analysisCard">
             <h3>Caregiver Checklist</h3>
             <p id="checklistResult">
                 Checklist will appear here.
