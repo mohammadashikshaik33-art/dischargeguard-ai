@@ -26,3 +26,16 @@ dischargeFileUpload.addEventListener("change", () => {
     }
 
 });
+
+
+// =========================
+// Analyze Button
+// =========================
+const analyzeCareButton =
+    document.getElementById("analyzeCareButton");
+
+analyzeCareButton.addEventListener("click", () => {
+
+    analyzeDischargeSummary();
+
+});
