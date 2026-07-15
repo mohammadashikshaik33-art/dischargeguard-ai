@@ -12,18 +12,36 @@ const selectedFileName =
 // =========================
 // Display Selected File Name
 // =========================
-
-dischargeFileUpload.addEventListener("change", () => {
+dischargeFileUpload.addEventListener("change", async () => {
 
     const uploadedFiles =
         dischargeFileUpload.files;
 
-    if (uploadedFiles.length > 0) {
-
-        selectedFileName.textContent =
-            uploadedFiles[0].name;
-
+    if (uploadedFiles.length === 0) {
+        return;
     }
+
+    const selectedFile =
+        uploadedFiles[0];
+
+    selectedFileName.textContent =
+        selectedFile.name;
+
+    if (!selectedFile.type.startsWith("image/")) {
+        return;
+    }
+
+    document.getElementById("summaryInput").value =
+        "Reading image...";
+
+    const result =
+        await Tesseract.recognize(
+            selectedFile,
+            "eng"
+        );
+
+    document.getElementById("summaryInput").value =
+        result.data.text;
 
 });
 
