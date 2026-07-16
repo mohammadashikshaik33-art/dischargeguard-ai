@@ -173,3 +173,5 @@ app.listen(PORT, () => {
         console.log(`AI model: ${HF_MODEL}`);
     }
 });
+
+module.exports = app;
