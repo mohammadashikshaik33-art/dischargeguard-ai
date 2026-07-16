@@ -118,6 +118,13 @@ textarea{
     border-radius:12px;
     cursor:pointer;
     font-size:1rem;
+    transition:opacity 0.2s ease;
+}
+
+#analyzeCareButton:disabled,
+#analyzeCareButton.loading{
+    opacity:0.7;
+    cursor:not-allowed;
 }
 
 .analysisResultsSection{
@@ -155,4 +162,78 @@ textarea{
 #selectedFileName{
     margin-top:10px;
     color:#475569;
+}
+
+/* ===================================
+   Mobile Responsiveness Styles
+   =================================== */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 5%;
+    }
+    
+    .mainHeading {
+        font-size: 1.25rem;
+    }
+    
+    .navigation-Button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .mainSection {
+        min-height: 70vh;
+        padding: 15px;
+    }
+    
+    .mainSection h1 {
+        font-size: 2rem;
+    }
+    
+    .mainSection p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .dashboard-container {
+        width: 95%;
+        padding: 20px 0;
+    }
+    
+    .dashboard-container h1 {
+        font-size: 1.75rem;
+        margin-bottom: 20px;
+    }
+    
+    textarea {
+        min-height: 150px;
+    }
+    
+    .result-card {
+        padding: 15px;
+    }
+}
+
+/* ===================================
+   HTML List Layouts inside Result Cards
+   =================================== */
+.result-card ul, 
+.result-card ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.result-card li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.result-card p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.result-card strong {
+    color: #0F172A;
 }
