@@ -1,0 +1,36 @@
+{
+  "name": "dischargeguard-ai",
+  "version": "1.0.0",
+  "description": "AI-Powered Post-Discharge Care Assistant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadashikshaik33-art/dischargeguard-ai.git"
+  },
+  "keywords": [
+    "healthcare",
+    "ai",
+    "discharge",
+    "caregiver"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mohammadashikshaik33-art/dischargeguard-ai/issues"
+  },
+  "homepage": "https://github.com/mohammadashikshaik33-art/dischargeguard-ai#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "puppeteer-core": "^25.3.0"
+  }
+}
