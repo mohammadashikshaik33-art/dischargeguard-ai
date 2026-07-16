@@ -8,10 +8,17 @@ const dischargeFileUpload =
 const selectedFileName =
     document.getElementById("selectedFileName");
 
+const summaryInput =
+    document.getElementById("summaryInput");
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
 
 // =========================
-// Display Selected File Name
+// File Upload Processing
 // =========================
+
 dischargeFileUpload.addEventListener("change", async () => {
 
     const uploadedFiles =
@@ -27,21 +34,139 @@ dischargeFileUpload.addEventListener("change", async () => {
     selectedFileName.textContent =
         selectedFile.name;
 
-    if (!selectedFile.type.startsWith("image/")) {
+    
+    
+
+
+    // =========================
+    // PDF Processing
+    // =========================
+
+    if (
+        selectedFile.type === "application/pdf" ||
+        selectedFile.name.toLowerCase().endsWith(".pdf")
+    ) {
+
+        console.log("PDF detected");
+
+        summaryInput.value =
+            "Reading PDF...";
+
+        try {
+
+            const fileReader =
+                new FileReader();
+
+            fileReader.onload = async function () {
+
+                try {
+
+                    const typedArray =
+                        new Uint8Array(this.result);
+
+                    const pdfDocument =
+                        await pdfjsLib.getDocument({
+                            data: typedArray
+                        }).promise;
+
+                    let extractedText = "";
+
+                    for (
+                        let pageNumber = 1;
+                        pageNumber <= pdfDocument.numPages;
+                        pageNumber++
+                    ) {
+
+                        const page =
+                            await pdfDocument.getPage(pageNumber);
+
+                        const textContent =
+                            await page.getTextContent();
+
+                        extractedText +=
+                            textContent.items
+                                .map(item => item.str)
+                                .join(" ");
+
+                        extractedText += "\n\n";
+                    }
+
+                    
+                    console.log(extractedText);
+
+                    
+                    summaryInput.value =
+                        extractedText;
+
+                } catch (error) {
+
+                    console.error(
+                        "PDF Extraction Error:",
+                        error
+                    );
+
+                    summaryInput.value =
+                        "Unable to read PDF.";
+
+
+                }
+
+            };
+
+            fileReader.readAsArrayBuffer(selectedFile);
+
+        } catch (error) {
+
+            console.error(
+                "PDF Reader Error:",
+                error
+            );
+
+            summaryInput.value =
+                "Unable to read PDF.";
+
+        }
+
         return;
     }
 
-    document.getElementById("summaryInput").value =
-        "Reading image...";
 
-    const result =
-        await Tesseract.recognize(
-            selectedFile,
-            "eng"
-        );
+    // =========================
+    // Image OCR Processing
+    // =========================
 
-    document.getElementById("summaryInput").value =
-        result.data.text;
+    if (selectedFile.type.startsWith("image/")) {
+
+        console.log("Image detected");
+
+        summaryInput.value =
+            "Reading image...";
+
+        try {
+
+            const result =
+                await Tesseract.recognize(
+                    selectedFile,
+                    "eng"
+                );
+
+            summaryInput.value =
+                result.data.text;
+
+        } catch (error) {
+
+            console.error(
+                "OCR Error:",
+                error
+            );
+
+            summaryInput.value =
+                "Unable to read image.";
+
+        }
+
+        return;
+    }
 
 });
 
@@ -49,6 +174,7 @@ dischargeFileUpload.addEventListener("change", async () => {
 // =========================
 // Analyze Button
 // =========================
+
 const analyzeCareButton =
     document.getElementById("analyzeCareButton");
 

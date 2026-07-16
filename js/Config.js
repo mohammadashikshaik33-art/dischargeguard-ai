@@ -35,6 +35,6 @@ const firebaseProjectConfig = {
 // =========================
 
 const geminiApiKey =
-    "";
+    "AIzaSyD_KrgSYrlgqFRZ1n_hUgIdqfBtGWG6Eqc";
 const geminiApiUrl =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
